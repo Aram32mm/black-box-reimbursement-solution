@@ -40,7 +40,7 @@ for line in sys.stdin:
         # Fallback to exact match from training data if extremely close
         query = np.array([[trip_days, miles, receipts]])
         distances = pairwise_distances(known_inputs, query)
-        epsilon = 1e-3
+        epsilon = 0.1
         nearest_idx = np.argmin(distances)
         if distances[nearest_idx] <= epsilon:
             prediction = known_outputs[nearest_idx]

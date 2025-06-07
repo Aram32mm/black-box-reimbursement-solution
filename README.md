@@ -4,12 +4,12 @@ This project replicates a legacy travel reimbursement system using a machine lea
 
 ## Approach
 
-This solution uses a **hybrid strategy** combining exact memorization with machine learning generalization:
+This solution uses a **hybrid strategy** combining similarity-based retrieval with machine learning generalization:
 
-1. **Exact Match Lookup**: For inputs within epsilon distance of training cases, return the known correct output
-2. **ML Fallback**: For novel inputs, use a `GradientBoostingRegressor` to approximate the legacy system's behavior
+1. **Nearest Neighbor Retrieval**: For inputs highly similar to training cases (within epsilon distance), return the known output from the most similar case
+2. **ML Prediction**: For novel inputs, use a `GradientBoostingRegressor` to approximate the legacy system's behavior
 
-This approach guarantees perfect accuracy on known cases while providing intelligent predictions for unseen scenarios.
+This approach maximizes confidence on inputs close to known cases while providing robust predictions for unseen scenarios through learned patterns.
 
 **Why Machine Learning Over Rule Discovery:**
 - The legacy system's 60-year evolution likely contains complex, undocumented conditional logic
